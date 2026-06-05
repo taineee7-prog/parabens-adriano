@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>FELIZ NIVERSARO JUIN</title>
+<style>
+body{font-family:Arial,sans-serif;background:#fff5f8;text-align:center;padding:20px}
+h1{font-size:2.2em} .card{max-width:800px;margin:auto;background:white;padding:20px;border-radius:16px}
+input{padding:10px;width:70%} button{padding:10px}
+#outdoor{display:none;margin-top:20px}
+.msg{font-weight:bold;margin:10px}
+</style>
+</head>
+<body>
+<div class="card">
+<h1><b>FELIZ NIVERSARO JUIN</b></h1>
+<p>Para desbloquear seu parabéns você precisa digitar 10 qualidades suas, vamos lá ❤️</p>
+
+<input id="txt"><button onclick="enviar()">Enviar</button>
+<div id="msg" class="msg"></div>
+
+<h3>Qualidades</h3>
+<ul id="lista"></ul>
+
+<div id="outdoor">
+<h2>Aqui está o seu outdoor de feliz aniversário 🎉</h2>
+<p>SUBSTITUA ESTE BLOCO PELAS IMAGENS DO PDF E DO OUTDOOR.</p>
+<div style="border:8px solid #777;padding:20px;margin:10px">OUTDOOR</div>
+<div style="font-size:60px">🏆</div>
+</div>
+</div>
+
+<script>
+const grupos={
+trabalhador:["trabalhador","trabalho"],
+honesto:["honesto","honestidade"],
+dedicado:["dedicado","dedicacao"],
+inteligente:["inteligente","inteligencia"],
+disciplinado:["disciplinado","disciplina"],
+viril:["viril","virilidade"],
+destemido:["destemido","destemor"],
+imponente:["imponente","imponencia"],
+divertido:["divertido","diversao"],
+inspirador:["inspirador","inspiracao"],
+responsavel:["responsavel","responsabilidade"],
+determinado:["determinado","determinacao"],
+corajoso:["corajoso","coragem"],
+generoso:["generoso","generosidade"],
+motivado:["motivado","motivacao"],
+ambicioso:["ambicioso","ambicao"],
+focado:["focado","foco"],
+reservado:["reservado","reserva"],
+discreto:["discreto","discricao"],
+franco:["franco","franqueza"],
+maduro:["maduro","maturidade"],
+esforcado:["esforcado","esforco"],
+respeito:["respeito","respeitoso"],
+autentico:["autentico","autenticidade"],
+batalhador:["batalhador","batalha"],
+otimista:["otimista","otimismo"],
+leal:["leal","lealdade"],
+sincero:["sincero","sinceridade"],
+compreensivo:["compreensivo","compreensao"],
+humor:["senso de humor","humor"]
+};
+
+const negativas={
+"feio":"Você é o mais lindo do mundo segundo a revista EU 😍",
+"fraco":"Eu nunca diria isso 😌",
+"chato":"EEEE eeeiiii, isso você não é! 😠",
+"arrogante":"Eu nunca diria isso 😌",
+"ansioso":"Mas quem não é né? kkkk 😅",
+"bruto":"É seu jeitinho kkkkk mas você é foiti 💪🏻",
+"frio":"Só esquentar moss 🔥"
+};
+
+let acertos=new Set();
+
+function norm(t){
+ return t.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"");
+}
+
+function revelar(){
+ document.getElementById("outdoor").style.display="block";
+}
+
+function enviar(){
+ let v=norm(document.getElementById("txt").value.trim());
+ let msg=document.getElementById("msg");
+
+ if(v==="desisto"||v==="desistir"){
+ msg.innerHTML="Você tem mais qualidades do que imagina.<br>Não é fácil enxergar com nossos próprios olhos o que há de bonito em nós mesmos. Mas eu vou te ajudar a lembrar de algumas coisas ❤️<br><br>Mas seja gentil com você mesmo.";
+ revelar();
+ return;
+ }
+
+ if(negativas[v]){
+ msg.innerHTML=negativas[v];
+ return;
+ }
+
+ let achou=false;
+ for(const [k,arr] of Object.entries(grupos)){
+   if(arr.includes(v)){
+      achou=true;
+      if(!acertos.has(k)){
+        acertos.add(k);
+        let li=document.createElement("li");
+        li.textContent=k;
+        document.getElementById("lista").appendChild(li);
+      }
+      msg.innerHTML="EEEE você acertou moss 😍";
+   }
+ }
+
+ if(!achou){
+   msg.innerHTML="Eu não alembrei de escrever essa 😬 Tente outra";
+ }
+
+ if(acertos.size>=10){
+   msg.innerHTML="Você é lindo 😍😍 Eu sabia que você ia acertar! Hoje é dia 10 e você acabou de escolher 10 palavras que te definem. Agora sim vou revelar seu parabéns 🎉❤️";
+   revelar();
+ }
+ document.getElementById("txt").value="";
+}
+</script>
+</body>
+</html>
