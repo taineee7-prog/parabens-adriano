@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz niversaro Juin</title>
+
+<style>
+
+body{
+
+background:
+
+radial-gradient(circle at 3% 8%, rgba(255,255,255,.20) 1px, transparent 1px),
+radial-gradient(circle at 8% 22%, rgba(255,255,255,.15) 2px, transparent 2px),
+radial-gradient(circle at 12% 60%, rgba(255,255,255,.12) 3px, transparent 3px),
+radial-gradient(circle at 18% 35%, rgba(255,255,255,.18) 1px, transparent 1px),
+radial-gradient(circle at 26% 12%, rgba(255,255,255,.15) 2px, transparent 2px),
+radial-gradient(circle at 32% 78%, rgba(255,255,255,.12) 1px, transparent 1px),
+radial-gradient(circle at 38% 42%, rgba(255,255,255,.20) 3px, transparent 3px),
+radial-gradient(circle at 45% 18%, rgba(255,255,255,.15) 2px, transparent 2px),
+radial-gradient(circle at 52% 65%, rgba(255,255,255,.18) 1px, transparent 1px),
+radial-gradient(circle at 60% 30%, rgba(255,255,255,.20) 2px, transparent 2px),
+radial-gradient(circle at 67% 82%, rgba(255,255,255,.12) 3px, transparent 3px),
+radial-gradient(circle at 74% 20%, rgba(255,255,255,.18) 1px, transparent 1px),
+radial-gradient(circle at 80% 55%, rgba(255,255,255,.14) 2px, transparent 2px),
+radial-gradient(circle at 88% 10%, rgba(255,255,255,.18) 3px, transparent 3px),
+radial-gradient(circle at 94% 72%, rgba(255,255,255,.14) 1px, transparent 1px),
+
+linear-gradient(180deg,#040404,#111,#040404);
+
+color:white;
+overflow-y:auto;
+}
+
+/* CONTAINER */
+.container{
+text-align:center;
+padding:18px;
+max-width:650px;
+margin:auto;
+width:100%;
+box-sizing:border-box;
+}
+
+/* INPUT */
+input{
+padding:14px;
+width:100%;
+max-width:420px;
+border-radius:12px;
+border:none;
+background:#2b2b2b;
+color:white;
+outline:none;
+font-size:16px;
+box-sizing:border-box;
+}
+
+/* BOTÕES */
+button{
+width:100%;
+max-width:420px;
+padding:14px;
+margin:8px auto;
+display:block;
+border:none;
+border-radius:12px;
+cursor:pointer;
+color:white;
+background:#444;
+font-size:16px;
+font-weight:bold;
+}
+
+#btnSim{background:#145a32;}
+#btnNao{background:#641e16;}
+#btnDesistir{
+width:110px;
+margin:0;
+
+background:#4b1111;
+
+font-size:15px;
+}
+
+/* MENSAGEM */
+#msg{
+min-height:60px;
+margin-top:18px;
+margin-bottom:20px;
+
+margin-top:10px;
+
+font-family:"Trebuchet MS",sans-serif;
+
+font-weight:300;
+
+letter-spacing:0.4px;
+
+font-size:15px;
+
+color:#6bc7b8;
+
+text-shadow:
+0 0 8px rgba(107,199,184,0.25);
+}
+
+/* LISTA */
+#lista{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+margin-top:15px;
+}
+
+.tag{
+background:#2a2a2a;
+padding:8px;
+border-radius:8px;
+font-size:13px;
+}
+
+/* LISTA FINAL */
+#listaFinal{
+display:none;
+margin-top:20px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:8px;
+}
+
+.tagFinal{
+background:#0b1f3a;
+padding:8px;
+border-radius:8px;
+font-size:13px;
+}
+
+/* SIM NÃO */
+#simNao{display:none;margin-top:20px;}
+
+/* FRASES */
+.frase{
+opacity:0;
+transform:translateY(10px);
+transition:0.6s ease;
+margin-top:10px;
+font-size:15px;
+}
+
+.frase.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* IMAGENS */
+img{
+width:90%;
+max-width:260px;
+margin:10px auto;
+display:block;
+border-radius:10px;
+opacity:0;
+transform:translateY(10px);
+transition:0.8s;
+}
+
+img.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* TEXTO FINAL */
+
+#final{
+display:none;
+margin-top:30px;
+text-align:left;
+font-family:"Segoe UI",sans-serif;
+font-weight:300;
+letter-spacing:0.3px;
+
+
+line-height:1.8;
+font-size:16px;
+
+background:linear-gradient(
+180deg,
+#2b2b2b,
+#1b1b1b,
+#090909
+);
+
+padding:25px;
+border-radius:18px;
+
+box-shadow:
+0 0 25px rgba(255,255,255,0.05);
+
+border:1px solid rgba(255,255,255,0.08);
+}
+
+.blue{
+color:#1f4e79;
+font-weight:bold;
+text-shadow:0 1px 6px rgba(0,0,0,0.4);
+}
+
+/* CONFETE LEVE */
+.confete{
+position:fixed;
+top:-10px;
+width:6px;
+height:6px;
+background:red;
+animation:fall 1.2s linear forwards;
+opacity:0.8;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh) rotate(360deg);
+opacity:0;
+}
+}
+
+h1{
+font-family:"Arial Black", Arial, sans-serif;
+font-size:38px;
+text-transform:uppercase;
+letter-spacing:2px;
+
+color:#ffffff;
+
+padding:18px 28px;
+
+background:
+linear-gradient(
+90deg,
+rgba(45,95,136,0) 0%,
+rgba(45,95,136,.22) 15%,
+rgba(45,95,136,.28) 50%,
+rgba(45,95,136,.22) 85%,
+rgba(45,95,136,0) 100%
+);
+
+backdrop-filter:blur(6px);
+
+border-radius:18px;
+
+display:inline-block;
+
+box-shadow:
+0 10px 35px rgba(0,0,0,.45);
+
+text-shadow:
+0 2px 10px rgba(0,0,0,.6);
+
+margin-bottom:25px;
+}
+
+
+p{
+font-size:17px;
+line-height:1.6;
+}
+
+h3{
+font-family:"Arial Black", Arial, sans-serif;
+
+text-transform:uppercase;
+
+letter-spacing:2px;
+
+font-size:18px;
+
+color:#e8e8e8;
+
+padding:12px 22px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,.15),
+rgba(180,180,180,.08)
+);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
+
+border:1px solid rgba(255,255,255,.08);
+
+border-radius:14px;
+
+display:inline-block;
+
+box-shadow:
+0 0 20px rgba(0,0,0,.45),
+0 8px 25px rgba(0,0,0,.35);
+
+margin-top:25px;
+}
+
+
+
+#barraFixa{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+
+background:rgba(15,15,15,.60);
+
+
+backdrop-filter:blur(10px);
+
+display:flex;
+align-items:center;
+gap:8px;
+
+padding:8px 45px 8px 8px;
+
+box-sizing:border-box;
+
+z-index:9999;
+
+transition:.5s;
+}
+
+#barraFixa.recolhida{
+transform:translateX(-92%);
+}
+
+#barraFixa input{
+flex:1;
+margin:0;
+}
+
+#btnDesistir{
+width:110px;
+margin:0;
+background:#4b1111;
+}
+
+#fecharBarra{
+position:absolute;
+
+top:4px;
+right:4px;
+
+width:24px;
+height:24px;
+
+padding:0;
+
+border:none;
+
+border-radius:6px;
+
+background:#5a1515;
+
+color:white;
+
+font-size:12px;
+
+cursor:pointer;
+
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+#overlayImagem{
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.95);
+z-index:999999;
+justify-content:center;
+align-items:center;
+}
+
+#overlayImagem img{
+max-width:95vw;
+max-height:95vh;
+width:auto;
+height:auto;
+opacity:1 !important;
+transform:none !important;
+border-radius:12px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+
+<h1>Feliz niversáro Juin</h1>
+
+<p>As veiz parece que você se esquece das suas qualidades</p>
+
+<p>Para te incentivar, digite 10 qualidades suas.. aí você vai ver sua mensagem de aniversario</p>
+
+
+<div id="barraFixa">
+
+<button id="fecharBarra">✕</button>
+
+<input id="input">
+
+<button id="btnDesistir" onclick="desistir()">
+Desistir
+</button>
+
+
+</div>
+
+<h3>O que você alembrou:</h3>
+
+
+<div id="lista"></div>
+<div id="msg"></div>
+
+<!-- SIM NÃO -->
+<div id="simNao">
+<p id="pergunta"></p>
+<button id="btnSim" onclick="escolha('sim')">SIM</button>
+<button id="btnNao" onclick="escolha('nao')">NÃO</button>
+</div>
+
+<!-- LISTA FINAL -->
+<div id="listaFinal"></div>
+
+<!-- FRASES -->
+<div id="frases"></div>
+
+<!-- IMAGENS -->
+<div id="imagens">
+<img src="foto1.png">
+<img src="foto2.jpeg">
+<img src="foto3.jpeg">
+</div>
+
+<!-- TEXTO FINAL -->
+<div id="final"></div>
+
+</div>
+
+<script>
+
+const qualidades = [
+"Trabalhador","Honesto","Dedicado","Inteligente","Disciplinado",
+"Viril","Destemido","Imponente","Divertido","Inspirador",
+"Responsável","Determinado","Corajoso","Generoso","Motivado",
+"Ambicioso","Focado","Engraçado","Discreto","Franco",
+"Maduro","Esforçado","Autêntico","Batalhador","compreensivo","bondoso","compreensivo","sincero","Calmo"
+];
+
+const defeitos = ["chato","feio","horrivel","inutil", "bruto", "frio","egoista","arrogante","estranho","horroroso","grosso"];
+
+const autoestima = ["lindo","tesão","gato","gostoso","bonito","lindão","gatão","gostosão","cheiroso","grande","forte", "musculoso", "atleta", "atletico", "jogador", "jogador caro","bom","bonitao","sensual","sexy"];
+
+let encontradas = [];
+
+/* NORMALIZAÇÃO */
+function norm(t){
+return t.toLowerCase()
+.normalize("NFD").replace(/[\u0300-\u036f]/g,"")
+.replace(/[^a-z ]/g,"")
+.trim();
+}
+
+/* MENSAGEM */
+function msg(t){
+document.getElementById("msg").innerText=t;
+setTimeout(()=>document.getElementById("msg").innerText="",4000);
+}
+
+/* LISTA */
+function atualizar(){
+
+document.getElementById("lista").innerHTML =
+encontradas.map(q=>`<div class="tag">${q}</div>`).join("");
+
+setTimeout(()=>{
+
+document.getElementById("lista")
+.lastElementChild
+?.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+},100);
+
+}
+
+/* AUTOESTIMA */
+function autoMsg(){
+const m=[
+"eita que autoestima boaa kk mas nao era isso 😅",
+"você sabe que é tudo isso né kk manda outra vai 🤭",
+"maaar minin.. ta inspirado é 😆", "isso é verdade 🙈 por isso que é meu alfa",
+"eu concordo kkk mas não era bem isso que devia escrever 😏"
+];
+return m[Math.floor(Math.random()*m.length)];
+}
+
+/* CONFETE LEVE */
+function confete(){
+for(let i=0;i<40;i++){
+let d=document.createElement("div");
+d.className="confete";
+d.style.left=Math.random()*100+"vw";
+d.style.background=`hsl(${Math.random()*360},100%,60%)`;
+document.body.appendChild(d);
+setTimeout(()=>d.remove(),1200);
+}
+}
+
+/* VERIFICAR */
+function verificar(){
+
+let v = norm(document.getElementById("input").value);
+document.getElementById("input").value="";
+
+/* AUTOESTIMA */
+if(autoestima.includes(v)){
+return msg(autoMsg());
+}
+
+/* DEFEITOS */
+if(defeitos.includes(v)){
+const frasesDefeito=[
+"SHHHHH! Não fala assim do meu alfa ☝️",
+"EEEEEE eiii, você não é isso 😠",
+"Tá proibido de falar isso 😤"
+];
+
+return msg(frasesDefeito[Math.floor(Math.random()*frasesDefeito.length)]);
+}
+
+/* QUALIDADES */
+let ok = qualidades.find(q=>norm(q)===v);
+
+if(!ok){
+return msg("não alembrei dessa, manda outra!");
+}
+
+if(!encontradas.includes(ok)){
+encontradas.push(ok);
+atualizar();
+msg(["EEEEEE acertou mosss 😍","você é bom em tudo!como pode? 🤌","eita como alembra","Já ganhou TAN TAN TAN 🏆","iapois essa foi fácil né kk","isso mesmo Juin 👏"][Math.floor(Math.random()*6)]);
+}
+
+if(encontradas.length>=10){
+
+msg("EEEEEE você acertou foi é tudo mossss😍");
+
+setTimeout(()=>{
+inicio();
+},4500);
+
+}
+
+}
+
+function desistir(){
+
+inicio();
+
+setTimeout(()=>{
+
+document.getElementById("simNao")
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+},200);
+
+}
+
+function inicio(){
+document.getElementById("simNao").style.display="block";
+document.getElementById("pergunta").innerText="Posso amostrar o que eu alembrei de você?";
+}
+
+/* FRASES SEM DIGITAÇÃO PESADA */
+
+function showFraseGrande(text){
+return new Promise(r=>{
+
+let el=document.createElement("div");
+
+el.className="frase";
+
+el.style.fontSize="22px";
+
+el.style.fontWeight="300";
+
+el.style.textTransform="uppercase";
+
+el.style.letterSpacing="2px";
+
+el.style.lineHeight="1.8";
+
+el.style.color="#d9d9d9";
+
+el.style.fontFamily="'Segoe UI',sans-serif";
+
+el.style.background=
+"linear-gradient(135deg, rgba(255,255,255,.10), rgba(40,40,40,.25))";
+
+el.style.backdropFilter="blur(14px)";
+
+el.style.webkitBackdropFilter="blur(14px)";
+
+el.style.border=
+"1px solid rgba(255,255,255,.08)";
+
+el.style.padding="22px";
+
+el.style.borderRadius="18px";
+
+el.style.boxShadow=
+"0 12px 35px rgba(0,0,0,.45)";
+
+
+
+
+el.style.fontFamily="Arial, sans-serif";
+
+el.innerText=text;
+
+document.getElementById("frases").appendChild(el);
+
+setTimeout(()=>el.classList.add("show"),50);
+
+setTimeout(r,1000);
+
+});
+}
+
+/* ESCOLHA */
+
+function showFrase(text){
+return new Promise(r=>{
+
+let el=document.createElement("div");
+
+el.className="frase";
+
+el.innerText=text;
+
+document.getElementById("frases").appendChild(el);
+
+setTimeout(()=>el.classList.add("show"),50);
+
+setTimeout(r,600);
+
+});
+}
+async function escolha(op){
+
+document.getElementById("simNao").style.display="none";
+
+if(op==="nao"){
+
+document.getElementById("msg").innerText="VOCÊ QUER SIM! 😠 e só minha opinião importa";
+
+await new Promise(r=>setTimeout(r,3200));
+
+document.getElementById("msg").innerText="";
+
+}
+
+document.getElementById("msg").innerText="Ainda bem que tem eu pra te alembrar 😌";
+
+await new Promise(r=>setTimeout(r,3500));
+
+document.getElementById("msg").innerText="";
+
+confete();
+fogos();
+
+msg("eeee moss, tu acertou foi é tudo!");
+
+document.getElementById("listaFinal").style.display="grid";
+document.getElementById("listaFinal").innerHTML =
+qualidades.map(q=>`<div class="tagFinal">${q}</div>`).join("");
+
+await new Promise(r=>setTimeout(r,800));
+
+let espaco1=document.createElement("div");
+espaco1.style.height="70px";
+document.getElementById("frases").appendChild(espaco1);
+
+
+await new Promise(r=>setTimeout(r,800));
+
+
+await new Promise(r=>setTimeout(r,800));
+await showFrase("");
+await showFrase("");
+
+
+await showFrase("Eu te amostreio quais qualidades eu alembrei de você.. então nunca esqueça delas");
+
+await showFrase("As vezes parece dificil nos olhar com carinho e lembrar das nossas qualidades.. Mas NUNCA se esqueça das coisas boas que você carrega e transmite");
+
+let espaco2=document.createElement("div");
+espaco2.style.height="70px";
+document.getElementById("frases").appendChild(espaco2);
+
+await showFrase(""); 
+
+for(let i=0;i<2;i++){
+await showFrase("");
+}
+
+await showFraseGrande(
+"Eu io alugar um outdoor para você.. Mas os alugueis cabaro de acabar hoje de manhãzinha 🤷🏼‍♀️"
+);
+
+
+await new Promise(r=>setTimeout(r,4500));
+
+document.getElementById("imagens")
+.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+let imgs=document.querySelectorAll("img");
+
+imgs.forEach((img,i)=>{
+setTimeout(()=>{
+
+img.classList.add("show");
+
+
+
+},i*600);
+});
+
+baloes();
+
+setTimeout(()=>{
+
+final();
+
+},5000);
+}
+
+function baloes(){
+
+for(let i=0;i<20;i++){
+
+let b=document.createElement("div");
+
+b.innerHTML="🎈";
+
+b.style.position="fixed";
+
+b.style.left=Math.random()*100+"vw";
+
+b.style.bottom="-50px";
+
+b.style.fontSize=
+(25+Math.random()*25)+"px";
+
+b.style.pointerEvents="none";
+
+document.body.appendChild(b);
+
+b.animate(
+[
+{
+transform:"translateY(0)"
+},
+{
+transform:"translateY(-120vh)"
+}
+],
+{
+duration:6000,
+delay:i*120
+}
+);
+
+setTimeout(()=>b.remove(),7000);
+
+}
+
+}
+
+/* FINAL */
+function final(){
+
+document.getElementById("final").style.display="block";
+
+setTimeout(()=>{
+
+
+
+},200);
+
+document.getElementById("final").innerHTML=`
+<p class="blue">Adriano..</p>
+
+ <div>
+
+  
+
+  
+    <p>Você é a melhor pessoa que eu já conheci. Eu sempre vou te olhar com bons olhos e com muito carinho, por isso você tem um lugar especial no meu coração. Eu só         consigo pensar em coisas maravilhosas ao seu respeito</p>
+
+    <p>Não sei o que a vida reservou para cada um de nós, mas eu queria fazer parte da sua vida até quando você ficasse velhinho e corcunda.. existem pessoas que o  tempo leva embora, e existem pessoas que a gente gostaria que o tempo preservasse para sempre. Você é essa pessoa!</p>
+
+    <p>Eu nunca planejei ter você por tanto tempo na minha cabeça. Aliás, eu não planejava que ninguém ocupasse esse espaço, porque as pessoas costumam decepcionar, iludir, se aproveitar e machucar. Durante muito tempo eu achei que ninguém merecia permanecer ali.</p>
+
+    <p>As pessoas hoje em dia parecem cada vez mais superficiais. Poucas valorizam caráter, princípios, esforço e bondade. Poucas se preocupam em se tornar alguém melhor.</p>
+
+    <p>Mas você não...</p>
+
+    <p>Você é uma boa pessoa. Rara de encontrar.</p>
+
+    <p>Eu tenho orgulho do que você é! das suas metas, dos seus sonhos e da forma como enxerga o futuro. Você é muito batalhador e determinado. Mesmo quando as coisas são difíceis, você continua seguindo em frente. E isso te torna único aos meus olhos.</p>
+
+    <p>Com olhar de amiga, de admiradora e de sua fã número #1..eu te desejo um feliz aniversário</p>
+
+    <p>Que Deus lhe dê muita saúde, proteção, sabedoria e força para enfrentar os dias difíceis..Que Ele continue sendo sua paz nos momentos de angústia, sua alegria nos dias felizes e seu refúgio quando tudo parecer pesado.</p>
+
+    <p>Que seus planos deem certo. Que sua vida financeira seja muito próspera. Que você conquiste tudo aquilo pelo que tem trabalhado e sonhado..</p>
+
+    <p>Com muita prosperidade para você voltar para o Brasil para que eu possa te abraçar de novo<br><br>
+
+    <p>Parabéns por ser quem você é! sou sua fã</p>
+
+
+  </div>
+
+</div>
+
+
+<div class="blue" style="text-align:center;margin-top:30px;">
+Feliz aniversário, Juin ❤️
+</div>
+
+<div style="
+text-align:center;
+margin-top:80px;
+font-size:30px;
+letter-spacing:6px;
+opacity:0.7;
+">
+Ende
+</div>
+
+</div>
+`;
+}
+
+
+function fogos(){
+
+for(let i=0;i<15;i++){
+
+setTimeout(()=>{
+
+for(let j=0;j<40;j++){
+
+let f=document.createElement("div");
+
+f.style.position="fixed";
+f.style.left=Math.random()*100+"vw";
+f.style.top=Math.random()*50+"vh";
+
+f.style.width="5px";
+f.style.height="5px";
+
+f.style.borderRadius="50%";
+
+f.style.background=
+`hsl(${Math.random()*360},100%,60%)`;
+
+f.style.pointerEvents="none";
+
+f.animate(
+[
+{
+transform:"translate(0,0)",
+opacity:1
+},
+{
+transform:
+`translate(
+${(Math.random()-0.5)*250}px,
+${(Math.random()-0.5)*250}px
+)`,
+opacity:0
+}
+],
+{
+duration:1200
+}
+);
+
+document.body.appendChild(f);
+
+setTimeout(()=>f.remove(),1200);
+
+}
+
+},i*400);
+
+}
+
+}
+
+/* ENTER */
+document.addEventListener("keydown",(e)=>{
+if(e.key==="Enter")verificar();
+});
+
+
+
+const barra = document.getElementById("barraFixa");
+const fecharBarra = document.getElementById("fecharBarra");
+
+fecharBarra.onclick = () => {
+    barra.classList.toggle("recolhida");
+};
+
+const todasImagens =
+document.querySelectorAll("#imagens img");
+
+todasImagens.forEach(img=>{
+
+img.addEventListener("dblclick",()=>{
+
+document.getElementById("overlayImagem").style.display="flex";
+
+document.getElementById("imgGrande").src = img.src;
+
+});
+
+});
+
+function fecharImagem(){
+document.getElementById("overlayImagem").style.display="none";
+}
+
+
+</script>
+
+<div id="overlayImagem" onclick="fecharImagem()">
+<img id="imgGrande">
+</div>
+
+</body>
+</html>
