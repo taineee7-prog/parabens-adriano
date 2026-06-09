@@ -404,7 +404,7 @@ Desistir
 
 </div>
 
-<h3>O que você alembrou:</h3>
+<h3>O que você alembrou vai ficar aqui 👇🏻:</h3>
 
 
 <div id="lista"></div>
@@ -447,12 +447,12 @@ const qualidades = [
 "Viril","Destemido","Imponente","Divertido","Inspirador",
 "Responsável","Determinado","Corajoso","Generoso","Motivado",
 "Ambicioso","Focado","Engraçado","Discreto","Franco",
-"Maduro","Esforçado","Autêntico","Batalhador","compreensivo","bondoso","compreensivo","sincero","Calmo"
+"Maduro","Esforçado","Autêntico","Batalhador","compreensivo","bondoso","Autocontrole","sincero","Calmo"
 ];
 
-const defeitos = ["chato","feio","horrivel","inutil", "bruto", "frio","egoista","arrogante","estranho","horroroso","grosso"];
+const defeitos = ["chato","feio","horrivel","inutil", "bruto","sem graça","fraco","frio","ignorante","egoista","arrogante","estranho","horroroso","grosso"];
 
-const autoestima = ["lindo","tesão","gato","gostoso","bonito","lindão","gatão","gostosão","cheiroso","grande","forte", "musculoso", "atleta", "atletico", "jogador", "jogador caro","bom","bonitao","sensual","sexy"];
+const autoestima = ["lindo","tesão","gato","gostoso","delicia","delicioso","maravilhoso","incrivel","bonito","lindão","gatão","gostosão","cheiroso","grande","forte", "musculoso", "atleta", "atletico", "jogador", "jogador caro","bom","bonitao","tesao","sensual","sexy"];
 
 let encontradas = [];
 
@@ -492,9 +492,9 @@ block:"center"
 /* AUTOESTIMA */
 function autoMsg(){
 const m=[
-"eita que autoestima boaa kk mas nao era isso 😅",
-"você sabe que é tudo isso né kk manda outra vai 🤭",
-"maaar minin.. ta inspirado é 😆", "isso é verdade 🙈 por isso que é meu alfa",
+"eita que autoestima boaa kk manda mais 😅",
+"você é mesmo kkk mas não era isso 🤭",
+"Ué, não sabia que tinha autoestima kkk 😆", "isso é verdade 🙈 por isso que é meu alfa",
 "eu concordo kkk mas não era bem isso que devia escrever 😏"
 ];
 return m[Math.floor(Math.random()*m.length)];
@@ -508,7 +508,7 @@ d.className="confete";
 d.style.left=Math.random()*100+"vw";
 d.style.background=`hsl(${Math.random()*360},100%,60%)`;
 document.body.appendChild(d);
-setTimeout(()=>d.remove(),1200);
+setTimeout(()=>d.remove(),1500);
 }
 }
 
@@ -528,6 +528,8 @@ if(defeitos.includes(v)){
 const frasesDefeito=[
 "SHHHHH! Não fala assim do meu alfa ☝️",
 "EEEEEE eiii, você não é isso 😠",
+"Vou fingir que não li essa 🙄",
+"Se não ta bom pra você, então da você pra mim 😒",
 "Tá proibido de falar isso 😤"
 ];
 
@@ -544,7 +546,7 @@ return msg("não alembrei dessa, manda outra!");
 if(!encontradas.includes(ok)){
 encontradas.push(ok);
 atualizar();
-msg(["EEEEEE acertou mosss 😍","você é bom em tudo!como pode? 🤌","eita como alembra","Já ganhou TAN TAN TAN 🏆","iapois essa foi fácil né kk","isso mesmo Juin 👏"][Math.floor(Math.random()*6)]);
+msg(["EEEEEE acertou mosss 😍"," Tu é muito do sabido 😎","eita como alembra de alugio dele","Já ganhou TAN TAN TAN 🏆","iapois essa foi fácil né kk","isso mesmo Juin 👏"][Math.floor(Math.random()*6)]);
 }
 
 if(encontradas.length>=10){
@@ -671,7 +673,7 @@ document.getElementById("msg").innerText="";
 
 document.getElementById("msg").innerText="Ainda bem que tem eu pra te alembrar 😌";
 
-await new Promise(r=>setTimeout(r,3500));
+await new Promise(r=>setTimeout(r,2900));
 
 document.getElementById("msg").innerText="";
 
@@ -699,7 +701,7 @@ await showFrase("");
 await showFrase("");
 
 
-await showFrase("Eu te amostreio quais qualidades eu alembrei de você.. então nunca esqueça delas");
+await showFrase("Eu te amostreio algumas qualidades que eu alembrei de você.. então nunca esqueça delas");
 
 await showFrase("As vezes parece dificil nos olhar com carinho e lembrar das nossas qualidades.. Mas NUNCA se esqueça das coisas boas que você carrega e transmite");
 
@@ -812,18 +814,24 @@ document.getElementById("final").innerHTML=`
   
     <p>Você é a melhor pessoa que eu já conheci. Eu sempre vou te olhar com bons olhos e com muito carinho, por isso você tem um lugar especial no meu coração. Eu só         consigo pensar em coisas maravilhosas ao seu respeito</p>
 
-    <p>Não sei o que a vida reservou para cada um de nós, mas eu queria fazer parte da sua vida até quando você ficasse velhinho e corcunda.. existem pessoas que o  tempo leva embora, e existem pessoas que a gente gostaria que o tempo preservasse para sempre. Você é essa pessoa!</p>
+    <p>Você é alguém que deixou uma marca bonita na minha vida. Daquelas que o tempo passa, os dias mudam, os caminhos seguem direções diferentes, mas a admiração continua exatamente no mesmo lugar</p>
+    
+    <p>Quando eu te vi pela primeira vez, é claro que a sua beleza chamou a minha atenção kk Você é uma pessoa muito bonita por fora. Mas eu vi que o que você tem de mais bonito é  o que tem dentro.</p>
+    
+    <p>Você é um homem de muita qualidades encantadoras, mais do que qualquer característica física. Sua bondade, seu caráter, seus princípios, sua determinação e a forma como você enfrenta a vida fizeram com que minha admiração por você crescesse cada vez mais.</p>
 
-    <p>Eu nunca planejei ter você por tanto tempo na minha cabeça. Aliás, eu não planejava que ninguém ocupasse esse espaço, porque as pessoas costumam decepcionar, iludir, se aproveitar e machucar. Durante muito tempo eu achei que ninguém merecia permanecer ali.</p>
+    <p>E o mais bonito é que você não para de evoluir. A cada ano você amadurece mais, cria novas metas, sonha mais alto, aprende coisas novas e continua construindo o seu futuro com foco e dedicação. É admirável ver alguém que nunca se acomoda e que está sempre buscando se tornar uma versão melhor de si mesmo.</p>
 
     <p>As pessoas hoje em dia parecem cada vez mais superficiais. Poucas valorizam caráter, princípios, esforço e bondade. Poucas se preocupam em se tornar alguém melhor.</p>
 
-    <p>Mas você não...</p>
-
-    <p>Você é uma boa pessoa. Rara de encontrar.</p>
+    <p>Mas você não.. Você é uma boa pessoa. Rara de encontrar.</p>
 
     <p>Eu tenho orgulho do que você é! das suas metas, dos seus sonhos e da forma como enxerga o futuro. Você é muito batalhador e determinado. Mesmo quando as coisas são difíceis, você continua seguindo em frente. E isso te torna único aos meus olhos.</p>
+   
+    <p>Não sei o que a vida reservou para cada um de nós. Não sei quais caminhos ainda vamos seguir. Mas eu adoraria estar por perto para te ver conquistar tudo aquilo pelo que você tanto luta.</p>
 
+    <p>Eu queria ver seus sonhos se realizando, suas metas e seus planos dando certo e cada esforço seu sendo recompensado. Existem pessoas que o tempo leva embora, e existem pessoas que a gente gostaria que o tempo preservasse para sempre. Você é essa pessoa! Queria te ver velhinho e corcunda kk olhando para trás e percebendo que valeu a pena nunca ter desistido.</p>
+   
     <p>Com olhar de amiga, de admiradora e de sua fã número #1..eu te desejo um feliz aniversário</p>
 
     <p>Que Deus lhe dê muita saúde, proteção, sabedoria e força para enfrentar os dias difíceis..Que Ele continue sendo sua paz nos momentos de angústia, sua alegria nos dias felizes e seu refúgio quando tudo parecer pesado.</p>
